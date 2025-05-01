@@ -34,7 +34,10 @@ async def skip(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"Skipped. Now playing: {current_track}")
     else:
         current_track = None
-        await update.message.reply_text("Queue is empty.")
+    if update.message:
+    await update.message.reply_text("Queue is empty.")
+else:
+    await update.effective_chat.send_message("Queue is empty.")
 
 
 async def stop(update: Update, context: ContextTypes.DEFAULT_TYPE):
