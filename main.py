@@ -9,7 +9,10 @@ from config import BOT_TOKEN
 
 async def seek(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Seek functionality is not implemented yet.")
-
+    
+async def seekback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("Seeking backward...")
+    
 async def main():
     application = Application.builder().token(BOT_TOKEN).build()
 
