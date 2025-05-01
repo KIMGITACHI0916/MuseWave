@@ -3,7 +3,7 @@ from telegram.ext import Application, CommandHandler
 from handlers.play import play
 from handlers.control import add_to_queue, get_queue, get_current_track
 from handlers.control import pause, resume, skip, stop
-from handlers.seek import seek_command, seekback_command
+from handlers.control import pause, resume, skip, stop
 from config import BOT_TOKEN
 
 async def main():
