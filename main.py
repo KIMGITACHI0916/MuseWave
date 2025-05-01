@@ -31,8 +31,11 @@ async def main():
 
 # Entry point
 if __name__ == "__main__":
+    import asyncio
+
     try:
-        asyncio.run(main())
-    except RuntimeError as e:
-        print("Runtime error:", e)
-        
+        loop = asyncio.get_event_loop()
+        loop.create_task(main())
+        loop.run_forever()
+    except KeyboardInterrupt:
+        print("Bot stopped by user.")
