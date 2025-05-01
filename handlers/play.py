@@ -2,7 +2,7 @@ import os
 from yt_dlp import YoutubeDL
 from telegram import Update
 from telegram.ext import ContextTypes
-from control import add_to_queue, get_queue, get_current_track
+from handlers.control import add_to_queue, get_queue, get_current_track
 
 # YT-DLP options to extract YouTube audio info
 ydl_opts = {
