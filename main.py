@@ -7,6 +7,7 @@ from handlers.control import pause, resume, skip, stop
 from config import BOT_TOKEN
 from bot.assistants import assistant  # adjust path if needed
 from pyrogram import idle
+from vc import join_vc, leave_vc
 
 async def main():
     await app.start()        # start your main bot
