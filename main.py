@@ -1,6 +1,7 @@
 import asyncio
 from telegram.ext import Application, CommandHandler
 from handlers.play import play_command
+from handlers.control import add_to_queue, get_queue, get_current_track
 from handlers.control import pause_command, resume_command, skip_command, stop_command
 from handlers.seek import seek_command, seekback_command
 from config import BOT_TOKEN
