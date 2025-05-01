@@ -6,15 +6,13 @@ from handlers.control import add_to_queue, get_queue, get_current_track
 from handlers.control import pause, resume, skip, stop
 from config import BOT_TOKEN
 
-# Extra commands
 async def seek(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Seek functionality is not implemented yet.")
 
 async def seekback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Seeking backward...")
 
-# Main async function
-async def main():
+async def run_bot():
     application = Application.builder().token(BOT_TOKEN).build()
 
     # Register command handlers
@@ -27,15 +25,16 @@ async def main():
     application.add_handler(CommandHandler("seekback", seekback))
 
     print("Music bot is running...")
-    await application.run_polling()
+    await application.initialize()
+    await application.start()
+    await application.updater.start_polling()
 
 # Entry point
 if __name__ == "__main__":
-    import asyncio
-
     try:
         loop = asyncio.get_event_loop()
-        loop.create_task(main())
+        loop.create_task(run_bot())
         loop.run_forever()
     except KeyboardInterrupt:
         print("Bot stopped by user.")
+    
