@@ -27,16 +27,14 @@ async def resume(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def skip(update: Update, context: ContextTypes.DEFAULT_TYPE):
     global current_track
+    chat = update.effective_chat
+
     if music_queue:
         current_track = music_queue.pop(0)
-        await update.message.reply_text(f"Skipped. Now playing: {current_track}")
+        await chat.send_message(f"Skipped. Now playing: {current_track}")
     else:
         current_track = None
-        if update.message:
-            await update.message.reply_text("Queue is empty.")
-        else:
-            await update.effective_chat.send_message("Queue is empty.")
-
+        await chat.send_message("Queue is empty.")
 
 async def stop(update: Update, context: ContextTypes.DEFAULT_TYPE):
     global music_queue, is_playing, current_track
