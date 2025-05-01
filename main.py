@@ -5,7 +5,7 @@ from handlers.play import play
 from handlers.control import add_to_queue, get_queue, get_current_track
 from handlers.control import pause, resume, skip, stop
 from config import BOT_TOKEN
-from bot.assistant import assistant  # adjust path if needed
+from assistant import assistant  # adjust path if needed
 from pyrogram import idle
 
 async def main():
