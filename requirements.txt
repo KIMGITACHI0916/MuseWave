@@ -5,4 +5,4 @@ ffmpeg
 pyrogram==2.0.106
 tgcrypto==1.2.5
 git+https://github.com/pytgcalls/pytgcalls.git@dev
-pytgcalls==2.0.0
+git+https://github.com/pytgcalls/pytgcalls.git@dev
