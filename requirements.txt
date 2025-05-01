@@ -4,5 +4,5 @@ spotipy
 ffmpeg
 pyrogram==2.0.106
 tgcrypto==1.2.5
-pytgcalls==0.3.0.dev16
+git+https://github.com/pytgcalls/pytgcalls.git@dev
 pytgcalls==2.0.0
