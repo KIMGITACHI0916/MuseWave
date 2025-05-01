@@ -28,6 +28,20 @@ async def main():
     print("Music bot is running...")
     await application.run_polling()
 
+import asyncio
+
+async def main():
+    application = ...
+    await application.initialize()
+    print("Music bot is running...")
+    await application.start()
+    await application.updater.start_polling()
+    await application.updater.idle()
+
 if __name__ == "__main__":
-    asyncio.run(main())
-  
+    try:
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(main())
+    except RuntimeError as e:
+        print("Runtime error:", e)
+        
