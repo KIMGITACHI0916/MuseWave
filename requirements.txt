@@ -1,4 +1,4 @@
-6python-telegram-bot==20.8
+python-telegram-bot==20.8
 yt-dlp
 spotipy
 ffmpeg
