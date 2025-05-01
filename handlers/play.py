@@ -13,6 +13,13 @@ ydl_opts = {
     'extract_flat': 'in_playlist',
 }
 
+# Download audio file from YouTube
+file_name = f"{video_title}.mp3"
+with YoutubeDL({'format': 'bestaudio', 'outtmpl': file_name}) as ydl:
+    ydl.download([video['webpage_url']])
+
+await join_vc(update.effective_chat.id, file_name)
+
 
 async def play(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not context.args:
