@@ -1,10 +1,7 @@
 6python-telegram-bot==20.8
 yt-dlp
-pyrogram
-tgcrypto
 spotipy
 ffmpeg
-pytgcalls
 pyrogram==2.0.106
 tgcrypto==1.2.5
 pytgcalls==0.3.0.dev16
