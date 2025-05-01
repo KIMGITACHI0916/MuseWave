@@ -22,7 +22,6 @@ async def play(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = ' '.join(context.args)
 
     try:
-        # Use yt-dlp to search for the track on YouTube
         with YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(query, download=False)
             video = info['entries'][0] if 'entries' in info else info
@@ -40,4 +39,4 @@ async def play(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     except Exception as e:
         await update.message.reply_text(f"Error playing track: {e}")
-      
+        
