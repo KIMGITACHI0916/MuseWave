@@ -3,3 +3,4 @@ yt-dlp
 pyrogram
 tgcrypto
 spotipy
+ffmpeg
