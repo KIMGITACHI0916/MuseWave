@@ -1,5 +1,3 @@
-# control.py
-
 from telegram import Update
 from telegram.ext import ContextTypes
 
@@ -34,10 +32,10 @@ async def skip(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"Skipped. Now playing: {current_track}")
     else:
         current_track = None
-    if update.message:
-    await update.message.reply_text("Queue is empty.")
-else:
-    await update.effective_chat.send_message("Queue is empty.")
+        if update.message:
+            await update.message.reply_text("Queue is empty.")
+        else:
+            await update.effective_chat.send_message("Queue is empty.")
 
 
 async def stop(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -58,4 +56,4 @@ def add_to_queue(track):
 
 def get_current_track():
     return current_track
-  
+    
