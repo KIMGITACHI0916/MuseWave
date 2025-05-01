@@ -6,6 +6,9 @@ from handlers.control import pause, resume, skip, stop
 from handlers.control import pause, resume, skip, stop
 from config import BOT_TOKEN
 
+async def seek(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("Seek functionality is not implemented yet.")
+
 async def main():
     application = Application.builder().token(BOT_TOKEN).build()
 
