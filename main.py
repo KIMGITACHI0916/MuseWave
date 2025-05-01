@@ -5,7 +5,15 @@ from handlers.play import play
 from handlers.control import add_to_queue, get_queue, get_current_track
 from handlers.control import pause, resume, skip, stop
 from config import BOT_TOKEN
+from bot.assistant import assistant  # adjust path if needed
+from pyrogram import idle
 
+async def main():
+    await app.start()        # start your main bot
+    await assistant.start()  # start your assistant account
+    print("Bot and Assistant started!")
+    await idle()
+    
 async def seek(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Seek functionality is not implemented yet.")
 
