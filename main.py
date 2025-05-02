@@ -25,7 +25,7 @@ async def run_bot():
     application = Application.builder().token(BOT_TOKEN).build()
 
     # Register command handlers
-    application.add_handler(CommandHandler("play", play))
+    app.add_handler(CommandHandler("play", play_audio))
     application.add_handler(CommandHandler("pause", pause))
     application.add_handler(CommandHandler("resume", resume))
     application.add_handler(CommandHandler("skip", skip))
