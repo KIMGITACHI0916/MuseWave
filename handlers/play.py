@@ -4,6 +4,15 @@ from telegram import Update
 from telegram.ext import ContextTypes
 from handlers.control import add_to_queue, get_queue, get_current_track
 
+async def play_audio(update, context):
+    url = context.args[0]
+    with YoutubeDL({'format': 'bestaudio'}) as ydl:
+        info = ydl.extract_info(url, download=False)
+        video_title = info.get("title", "audio")
+
+    file_name = f"{video_title}.mp3"
+    # continue with your audio logic...
+
 # YT-DLP options to extract YouTube audio info
 ydl_opts = {
     'format': 'bestaudio/best',
