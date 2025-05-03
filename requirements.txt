@@ -1,8 +1,8 @@
 python-telegram-bot==20.8
 yt-dlp
 spotipy
-ffmpeg
 pyrogram==2.0.106
 tgcrypto==1.2.5
 pytgcalls==0.8.1
 tgcalls==0.5.0
+imageio-ffmpeg  # Only if some library requires ffmpeg bindings
