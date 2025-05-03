@@ -3,6 +3,6 @@ yt-dlp
 spotipy
 pyrogram==2.0.106
 tgcrypto==1.2.5
-pytgcalls==0.8.1
+pytgcalls==0.5.3
 tgcalls==0.5.0
 imageio-ffmpeg  # Only if some library requires ffmpeg bindings
