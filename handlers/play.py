@@ -51,12 +51,16 @@ async def play(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
             # Send the downloaded audio file
             try:
-                await update.message.reply_audio(audio=open(file_name, 'rb'))
+                if os.path.exists(file_name):
+                    await update.message.reply_audio(audio=open(file_name, 'rb'))
+                else:
+                    await update.message.reply_text(f"Error: {file_name} does not exist.")
             except Exception as e:
                 await update.message.reply_text(f"Error sending audio: {e}")
             finally:
                 # Clean up the audio file after sending
-                os.remove(file_name)
+                if os.path.exists(file_name):
+                    os.remove(file_name)
 
             # After playing, check if there's another track in the queue
             queue = get_queue()
@@ -71,5 +75,8 @@ async def play(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # Function to handle playing the next track (to be implemented)
 async def play_next_track(track):
     # Logic to play the next track from the queue
-    await play(track)
+    query = track  # You can adapt this as necessary for your queue
+    context = {}  # Add context handling if necessary
+    update = {}  # Add update handling if necessary
+    await play(update, context)
     
