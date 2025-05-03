@@ -1,6 +1,8 @@
 from pytgcalls import PyTgCalls
 from pytgcalls.types.input_stream import InputStream, AudioPiped
 from pyrogram import Client
+from pytgcalls.types.input_stream import AudioPiped
+from pytgcalls.types.input_stream import InputStream  # Only if needed
 
 # This should be your assistant Pyrogram client
 from bot.assistants import assistant  # adjust the import if needed
