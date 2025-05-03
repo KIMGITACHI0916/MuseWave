@@ -44,8 +44,24 @@ async def play(update: Update, context: ContextTypes.DEFAULT_TYPE):
         else:
             add_to_queue(track)
             await update.message.reply_text(f"Now playing: {track}")
-            # You would now stream the audio file_name here
+            # Stream the audio file
+            await update.message.reply_audio(audio=open(file_name, 'rb'))
+
+            # Clean up the audio file after sending
+            os.remove(file_name)
+
+            # After playing, check if there's another track in the queue
+            queue = get_queue()
+            if queue:
+                next_track = queue.pop(0)
+                # Here you would call a function to play the next track, like `play_next_track()` (not implemented in your current code)
+                await play_next_track(next_track)
 
     except Exception as e:
         await update.message.reply_text(f"Error playing track: {e}")
-        
+
+# Function to handle playing the next track (to be implemented)
+async def play_next_track(track):
+    # Logic to play the next track from the queue
+    pass
+    
