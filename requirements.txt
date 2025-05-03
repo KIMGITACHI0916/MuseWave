@@ -4,5 +4,4 @@ spotipy
 pyrogram==2.0.106
 git+https://github.com/pyrogram/tgcrypto.git
 git+https://github.com/pytgcalls/pytgcalls.git
-tgcalls==0.5.0
 imageio-ffmpeg  # Only if some library requires ffmpeg bindings
