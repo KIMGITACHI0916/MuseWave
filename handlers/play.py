@@ -4,15 +4,6 @@ from telegram import Update
 from telegram.ext import ContextTypes
 from handlers.control import add_to_queue, get_queue, get_current_track
 
-async def play_audio(update, context):
-    url = context.args[0]
-    with YoutubeDL({'format': 'bestaudio'}) as ydl:
-        info = ydl.extract_info(url, download=False)
-        video_title = info.get("title", "audio")
-
-    file_name = f"{video_title}.mp3"
-    # continue with your audio logic...
-
 # YT-DLP options to extract YouTube audio info
 ydl_opts = {
     'format': 'bestaudio/best',
@@ -21,15 +12,6 @@ ydl_opts = {
     'default_search': 'ytsearch',
     'extract_flat': 'in_playlist',
 }
-
-# Download audio file from YouTube
-file_name = f"{video_title}.mp3"
-with YoutubeDL({'format': 'bestaudio', 'outtmpl': file_name}) as ydl:
-    ydl.download([video['webpage_url']])
-
-async def play_audio(update, context):
-    await join_vc(update.effective_chat.id, file_name)
-
 
 async def play(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not context.args:
@@ -42,8 +24,17 @@ async def play(update: Update, context: ContextTypes.DEFAULT_TYPE):
         with YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(query, download=False)
             video = info['entries'][0] if 'entries' in info else info
-            video_url = video['url']
-            video_title = video['title']
+            video_title = video.get("title", "audio")
+            video_url = video.get("webpage_url")
+
+        # Download audio
+        file_name = f"{video_title}.mp3"
+        download_opts = {
+            'format': 'bestaudio',
+            'outtmpl': file_name
+        }
+        with YoutubeDL(download_opts) as ydl:
+            ydl.download([video_url])
 
         track = f"{video_title} ({video_url})"
 
@@ -53,6 +44,7 @@ async def play(update: Update, context: ContextTypes.DEFAULT_TYPE):
         else:
             add_to_queue(track)
             await update.message.reply_text(f"Now playing: {track}")
+            # You would now stream the audio file_name here
 
     except Exception as e:
         await update.message.reply_text(f"Error playing track: {e}")
