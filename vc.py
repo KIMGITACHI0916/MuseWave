@@ -1,6 +1,6 @@
 from pytgcalls import PyTgCalls
 from pytgcalls.types import Update
-from pytgcalls.types.input_streams import AudioPiped  # Note: old version uses "input_streams"
+from pytgcalls.types.stream import AudioPiped  # Note: old version uses "input_streams"
 from pyrogram import Client
 from config import API_ID, API_HASH, SESSION_STRING
 
