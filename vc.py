@@ -1,22 +1,17 @@
 from pytgcalls import PyTgCalls
-from pytgcalls.types.input_stream import InputStream, AudioPiped
-from pyrogram import Client
+from pytgcalls.types import Update
 from pytgcalls.types.input_stream import AudioPiped
-from pytgcalls.types.input_stream import InputStream  # Only if needed
+from pyrogram import Client
+from config import API_ID, API_HASH, SESSION_STRING
 
-# This should be your assistant Pyrogram client
-from bot.assistants import assistant  # adjust the import if needed
+client = Client("music", api_id=API_ID, api_hash=API_HASH, session_string=SESSION_STRING)
+pytgcalls = PyTgCalls(client)
 
-pytgcalls = PyTgCalls(assistant)
-
-async def join_vc(chat_id: int, audio_path: str):
+async def join_vc(chat_id: int, audio_file: str):
     await pytgcalls.join_group_call(
         chat_id,
-        InputStream(
-            AudioPiped(audio_path),
-        ),
+        AudioPiped(audio_file),
     )
 
 async def leave_vc(chat_id: int):
     await pytgcalls.leave_group_call(chat_id)
-  
