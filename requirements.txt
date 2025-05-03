@@ -2,6 +2,6 @@ python-telegram-bot==20.8
 yt-dlp
 spotipy
 pyrogram==2.0.106
-git+https://github.com/pyrogram/tgcrypto.git
-git+https://github.com/pytgcalls/pytgcalls.git
+pytgcalls
+tgcrypto
 imageio-ffmpeg  # Only if some library requires ffmpeg bindings
